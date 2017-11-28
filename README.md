@@ -62,14 +62,14 @@ node+mongo+swig实现前后台开发
      
      * fonts为bootstrap字体文件
      
-  3. router目录为express后台接口文件
+3. router目录为express后台接口文件
   
-  4. schemas目录为数据库模型
+4. schemas目录为数据库模型
   
-  5. views目录为页面存放目录
+5. views目录为页面存放目录
   
-  6. app.js为项目入口
+6. app.js为项目入口
   
-  7. package.json为项目配置文件
+7. package.json为项目配置文件
      
   
