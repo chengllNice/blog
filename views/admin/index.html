@@ -1,0 +1,10 @@
+<!--模板继承，复用-->
+{% extends 'layout.html' %}
+
+<!--重写main-->
+{% block main %}
+<div class="jumbotron">
+    <h1>Hello, {{managerInfo.username}}</h1>
+    <p>欢迎进入我的博客后台管理！</p>
+</div>
+{% endblock %}

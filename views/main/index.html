@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+<!--内容区域-->
+<div class="searchNum">
+    <p>当前搜索结果约 <span>{{count}}</span> 条</p>
+    <div class="searchNum_box">
+        <span class="mark bg-success">node</span>
+    </div>
+</div>
+{% for content in contents %}
+<div class="con_list">
+    <div class="con_list_left">
+        <div class="look">
+            <span>{{content.views}}</span>
+            <span>浏览</span>
+        </div>
+    </div>
+    <div class="con_list_right">
+        <div class="con_list_title">
+            <a href="/article/details?articleId={{content._id.toString()}}">{{content.title}}</a>
+            {% for m in content.mark %}
+            <span class="mark bg-success ">{{m}}</span>
+            {% endfor %}
+        </div>
+        <div class="con_list_info">
+            <span>作者：{{content.user.username}}</span>
+            <span>分类：{{content.category.name}}</span>
+            <span>更新日期：{{content.addTime | date('Y年m月d日 H:i:s', -8*60)}}</span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!--内容区域结束-->
+
+<nav aria-label="...">
+    <ul class="pager">
+        {% if page==1 %}
+        <li class="disabled"><a>上一页</a></li>
+        {% else %}
+        <li><a href="/?categoryId={{categoryId}}&page={{page-1}}">上一页</a></li>
+        {% endif %}
+        <li>
+            {{page}}/{{pageCount}}
+        </li>
+        {% if page==pageCount %}
+        <li class="disabled"><a>下一页</a></li>
+        {% else %}
+        <li><a href="/?categoryId={{categoryId}}&page={{page+1}}">下一页</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+
+{% endblock %}

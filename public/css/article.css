@@ -1,0 +1,36 @@
+/*导航*/
+.nav_wrap>h4{
+    float: left;
+    margin:0;
+    margin-left:20px;
+    line-height: 60px;
+}
+.article_personal{
+    float: right;
+}
+.article_personal>img{
+    width: 50px;
+    margin-top:5px;
+}
+.article_personal>h5{
+    display: inline-block;
+}
+
+/*主体*/
+.article_wrap{
+    width: 1200px;
+    margin:auto;
+    background: rgba(255,255,255,1);
+    padding:20px 0;
+}
+.take_article_btn{
+    float: right;
+    margin-top:20px;
+}
+.acrticle_head_title{
+    float: left;
+}
+.acrticle_head{
+    overflow: hidden;
+    margin-bottom:20px;
+}

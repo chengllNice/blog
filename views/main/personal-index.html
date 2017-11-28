@@ -1,0 +1,60 @@
+{% extends 'personal.html' %}
+
+{% block content %}
+
+<div class="personal_content_nav">
+    <ul>
+        <li><a href="/personal" class="active">我的主页</a></li>
+        <li><a href="/personal/collection">我的收藏</a></li>
+        <li><a href="javascript:;">我的关注</a></li>
+        <li><a href="javascript:;">我的提问</a></li>
+    </ul>
+</div>
+
+<div class="personal_content_box">
+
+    <div class="article_list">
+        <div class="personal_content_box_title">
+            <h3>我的文章</h3>
+            <div class="line"></div>
+        </div>
+        <table class="table table-hover">
+            <tr>
+                <th style="width: 40%;">文章标题</th>
+                <th style="width: 15%;">文章分类</th>
+                <th style="width: 25%;">发布日期</th>
+                <th style="width: 10%;">操作</th>
+            </tr>
+            {% for article in articles %}
+            <tr>
+                <td><a href="">{{article.title}}</a></td>
+                <td>{{article.category.name}}</td>
+                <td>{{article.addTime | date('Y年m月d日 H:i:s',-8*60)}}</td>
+                <td>
+                    <a href="/personal/article/edit?articleId={{article._id.toString()}}">编辑</a>
+                    <a href="javascript:;" class="articleDeleteBtn" onclick="articleDelete('{{article._id.toString()}}')">删除</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <nav aria-label="...">
+        <ul class="pager">
+            {% if page==1 %}
+            <li class="disabled"><a>上一页</a></li>
+            {% else %}
+            <li><a href="/personal?page={{page-1}}">上一页</a></li>
+            {% endif %}
+            <li>
+                {{page}}/{{pageCount}}
+            </li>
+            {% if page==pageCount %}
+            <li class="disabled"><a>下一页</a></li>
+            {% else %}
+            <li><a href="/personal?page={{page+1}}">下一页</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}

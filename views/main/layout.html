@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/fontAwesome/css/font-awesome.min.css">
+</head>
+<body>
+<!--顶部-->
+<!--<div id="top">-->
+    <!--<div class="top_bg"></div>-->
+<!--</div>-->
+<!--顶部结束-->
+
+<!--导航部分-->
+<div id="nav">
+    <div class="nav">
+        <div class="nav_wrap">
+            <div class="logo">
+                <a href="/">
+                    <span class="logo_a1">Blog</span><span class="logo_a2">hapyy</span>
+                </a>
+            </div>
+            <div class="nav_con">
+                <ul>
+                    {% if categoryId %}
+                    <li><a href="/">首页</a></li>
+                    {% else %}
+                    <li><a href="/" class="nav_active">首页</a></li>
+                    {% endif %}
+                    {% for category in categories %}
+                    {% if categoryId == category._id %}
+                    <li><a href="/?categoryId={{category._id.toString()}}" class="nav_active">{{category.name}}</a></li>
+                    {% else %}
+                    <li><a href="/?categoryId={{category._id.toString()}}">{{category.name}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <a href="javascript:;" class="nav_more">…</a>
+            </div>
+            <div class="search">
+                <div class="search_icon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </div>
+                <input type="text" class="search_input" placeholder="请输入搜索信息">
+            </div>
+        </div>
+    </div>
+</div>
+<!--导航结束-->
+
+<div class="nav_line"></div>
+
+<!--内容区域-->
+<div id="content">
+    <div class="content_wrap">
+        <div class="con_left">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="con_right">
+            <!--登录-->
+            {% if !userInfo._id %}
+
+            <div class="login_box">
+                <h2 class="panel-title">登 录</h2>
+                <div class="line"></div>
+                <div class="login_wrap">
+                    <div class="username_wrap form-group">
+                        <input type="text" id="username" class="form-control" placeholder="请输入用户名...">
+                    </div>
+                    <div class="password_wrap form-group">
+                        <input type="text" id="password" class="form-control" placeholder="请输入密码...">
+                    </div>
+                    <div class="loginbtn_wrap form-group">
+                        <button class="loginbtn btn btn-success btn-block">登 录</button>
+                    </div>
+                    <div class="form-group go_register">
+                        <span>还没有账号？</span>
+                        <span><a href="javascript:;">立即注册</a></span>
+                    </div>
+                    <div class="form-group login_prompt_info"></div>
+                </div>
+            </div>
+
+            <!--注册-->
+            <div class="register_box" style="display: none;">
+                <h2 class="panel-title">注 册</h2>
+                <div class="line"></div>
+                <div class="login_wrap">
+                    <div class="username_wrap form-group">
+                        <input type="text" id="reg_username" class="form-control" placeholder="用户名...">
+                    </div>
+                    <div class="password_wrap form-group">
+                        <input type="text" id="reg_password" class="form-control" placeholder="密码...">
+                    </div>
+                    <div class="password_wrap form-group">
+                        <input type="text" id="reg_repassword" class="form-control" placeholder="确认密码...">
+                    </div>
+                    <div class="loginbtn_wrap form-group">
+                        <button class="registerbtn btn btn-success btn-block">注 册</button>
+                    </div>
+                    <div class="form-group go_login">
+                        <span>已有账号？</span>
+                        <span><a href="javascript:;">立即登录</a></span>
+                    </div>
+                    <div class="form-group register_prompt_info"></div>
+                </div>
+            </div>
+            {% else %}
+            <!--个人信息-->
+            <div class="user_info">
+                <h2 class="panel-title">个人信息</h2>
+                <div class="line" style="width: 70px;"></div>
+                <div class="login_wrap">
+                    <div class="information">
+                        <div class="head_img">
+                            <img src="{{imgSrc}}" alt="">
+                        </div>
+                        <div class="personal_info">
+                            <h3>{{userInfo.username}}</h3>
+                            {% if userInfo.isAdmin %}
+                            <span class="badge">管理员</span>
+                            <p><a href="/admin" target="_blank">进入后台管理</a></p>
+                            {% else %}
+                            <span class="badge">作者</span>
+                            <p>个人简介：我是一名前端工作者</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="operation">
+                        <span><a href="/article/add" target="_blank">发表文章</a></span>
+                        <span><a href="/personal" target="_blank">个人中心</a></span>
+                        <span><a href="/personal/collection">我的收藏</a></span>
+                    </div>
+                    <div class="qiut_btn">
+                        <button class="btn btn-success btn-block quit">退出</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!--后台管理入口-->
+            {% if !userInfo.isAdmin %}
+            <div class="panel-body bg-success text-right">
+                <a href="/admin/login" target="_blank">后台管理入口</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!--内容区域结束-->
+
+</body>
+</html>
+<script src="/public/js/jquery-1.8.3.min.js"></script>
+<script src="/public/js/index.js"></script>

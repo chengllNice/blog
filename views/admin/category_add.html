@@ -1,0 +1,24 @@
+<!--模板继承，复用-->
+{% extends 'layout.html' %}
+
+<!--重写main-->
+{% block main %}
+<ol class="breadcrumb">
+    <li><a href="#">管理首页</a></li>
+    <li><span>分类添加</span></li>
+</ol>
+
+<h3>分类添加</h3>
+
+<form role="form" method="post">
+    <div class="form-group">
+        <label for="categoryName">分类名称：</label>
+        <input type="text" class="form-control" id="categoryName" placeholder="请输入分类名称...">
+    </div>
+    <div class="category_prompt_info"></div>
+    <button type="button" class="btn btn-default categoryAddBtn">提交</button>
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<!--模板继承，复用-->
+{% extends 'index.html' %}
+
+<!--重写main-->
+{% block main %}
+    <ol class="breadcrumb">
+        <li><a href="#">管理首页</a></li>
+        <li><span>用户列表</span></li>
+    </ol>
+
+    <h3>用户列表</h3>
+
+    <table class="table table-striped table-hover table-bordered">
+        <tr>
+            <th style="width: 5%;">序号</th>
+            <th style="width: 25%;">ID</th>
+            <th style="width: 20%;">用户名</th>
+            <th style="width: 15%;">密码</th>
+            <th style="width: 15%;">是否是管理员</th>
+            <th style="width: 15%;">操作</th>
+        </tr>
+        {% for userList in userLists %}
+        <tr>
+            <td>{{loop.index+(page-1)*pageSize}}</td>
+            <td>{{userList._id.toString()}}</td>
+            <td>{{userList.username}}</td>
+            <td>{{userList.password}}</td>
+            {% if userList.isAdmin %}
+            <td>是</td>
+            {% else %}
+            <td>否</td>
+            {% endif %}
+            <td>
+                <a href="javascript:;" onclick="editPower('{{userList._id.toString()}}')">修改权限</a>
+                <a href="javascript:;" onclick="userDelete('{{userList._id.toString()}}')">删除</a>
+                {% include 'modal.html' %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if err===1 %}
+    <h2 style="text-align: center; color: red;">{{message}}</h2>
+    {% endif %}
+
+    {% include 'page.html' %}
+{% endblock %}

@@ -1,0 +1,35 @@
+<!--模板继承，复用-->
+{% extends 'layout.html' %}
+
+<!--重写main-->
+{% block main %}
+<ol class="breadcrumb">
+    <li><a href="#">管理首页</a></li>
+    <li><span>管理员添加</span></li>
+</ol>
+
+<h3>管理员添加</h3>
+
+<form role="form" method="post">
+    <div class="form-group">
+        <label for="usernameAdd">用户名：</label>
+        <input type="text" class="form-control" id="usernameAdd">
+    </div>
+    <div class="form-group">
+        <label for="passwordAdd">密码：</label>
+        <input type="text" class="form-control" id="passwordAdd">
+    </div>
+    <div class="form-group">
+        <label for="repasswordAdd">确认密码：</label>
+        <input type="text" class="form-control" id="repasswordAdd">
+    </div>
+    <div class="form-group">
+        <label for="isAdminAdd">是否是管理员：</label>
+        <input type="text" class="form-control" disabled="disabled" value="是" id="isAdminAdd">
+    </div>
+    <div class="userAdd_prompt_info" style="height: 35px;color: red;"></div>
+    <button type="button" class="btn btn-default userAddBtn">提交</button>
+</form>
+
+
+{% endblock %}

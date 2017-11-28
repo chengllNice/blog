@@ -1,0 +1,71 @@
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myDeleteModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myDeleteModal">提示</h4>
+            </div>
+            <div class="modal-body">确定删除么？</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <a type="button" class="btn btn-primary articleDeleteModalBtn">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--personal.html页面上传头像-->
+<style>
+    .file{
+        padding: 4px 10px;
+        min-height: 20px;
+        line-height: 20px;
+        position: relative;
+        cursor: pointer;
+        color: #888;
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        display: inline-block;
+        *display: inline;
+        *zoom: 1
+    }
+    .file>input{
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor: pointer
+    }
+    .file_box{
+        height: 200px;
+        width: 200px;
+        margin: 30px 0;
+        border: 1px dotted #cccccc;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<div class="modal fade" id="uploadImgModal" tabindex="-1" role="dialog" aria-labelledby="myUploadImgModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myUploadImgModal">上传头像</h4>
+                </div>
+                <form action="/personal/upload" enctype="multipart/form-data" method="post">
+                    <div class="modal-body">
+                        <div class="file">选择图片
+                            <input type="file" name="file">
+                        </div>
+                        <div class="file_box"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="上传" class="btn btn-success btn-block fileImgBtn">
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>

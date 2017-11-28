@@ -1,0 +1,51 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+/*后台登录*/
+body{
+    background: url("../../public/images/houtai_bg.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+.cover{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+}
+.content{
+    width: 550px;
+    height: 360px;
+    background: rgba(238,238,238,1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+    border-radius: 5px;
+}
+.head{
+    width: 100%;
+    margin:auto;
+    background: #ffffff;
+    text-align: center;
+    padding:20px 0;
+    border-radius: 5px;
+}
+.title{
+    color: rgb(0,128,0);
+}
+.user_login{
+    padding-top:40px;
+}
+.go_blog{
+    margin-top: 20px;
+    text-align: right;
+}
+.mana_prompt_info{
+    color: red;
+}

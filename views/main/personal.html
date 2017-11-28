@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/fontAwesome/css/font-awesome.min.css">
+</head>
+<body>
+
+<!--导航部分-->
+<div id="nav">
+    <div class="nav">
+        <div class="nav_wrap">
+            <div class="logo">
+                <a href="/">
+                    <span class="logo_a1">Blog</span><span class="logo_a2">hapyy</span>
+                </a>
+            </div>
+            <div class="search">
+                <div class="search_icon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </div>
+                <input type="text" class="search_input" placeholder="请输入搜索信息">
+            </div>
+        </div>
+    </div>
+</div>
+<!--导航结束-->
+
+<div class="nav_line"></div>
+
+<!--内容区域-->
+<div id="content">
+    <!--个人信息-->
+    <div class="personal_data">
+        <div class="content_wrap">
+            <div class="personal_img">
+                <img src="{{imgSrc}}" alt="">
+                <div class="upload_user_imgBtn">上传头像</div>
+            </div>
+            <div class="personal_infomation">
+                <h1>{{userInfo.username}}</h1>
+                {% if userInfo.isAdmin %}
+                <p>角色：管理员</p>
+                {% else %}
+                <p>角色：普通用户</p>
+                {% endif %}
+                <ul class="personal_count">
+                    <li>
+                        <span class="article_num"></span>
+                        <span>{{count}}</span>
+                    </li>
+                    <li>
+                        <span class="collection_num"></span>
+                        <span>20</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="personal_abs">
+                <div class="personal_abs_title">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="personal_abs_box">
+                    <div class="abs_prompt">
+                        暂时没有，
+                        <a href="javascript:;" class="abs_add">立即添加</a>
+                    </div>
+                    <div class="abs_edit form-group" style="display: none;">
+                        <textarea name="" class="form-control" id="" placeholder="编辑个人简介..."></textarea>
+                        <button class="btn btn-default abs_cancel">取消</button>
+                        <button class="btn btn-success abs_sure">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主要内容-->
+    <div class="content_wrap">
+        <div class="personal_content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<!--内容区域结束-->
+
+
+{% include 'modal.html' %}
+
+
+
+</body>
+</html>
+<script src="/public/js/jquery-3.1.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/index.js"></script>

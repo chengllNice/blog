@@ -1,0 +1,18 @@
+<nav aria-label="...">
+    <ul class="pager">
+        {% if page==1 %}
+        <li class="disabled"><a>上一页</a></li>
+        {% else %}
+        <li><a href="/admin{{urlRouter}}?page={{page - 1}}">上一页</a></li>
+        {% endif %}
+        <li>
+            一共有 {{count}} 条数据，每页显示 {{pageSize}} 条数据，一共 {{pageCount}} 页，当前第 {{page}} 页
+        </li>
+        {% if page==pageCount %}
+        <li class="disabled"><a>下一页</a></li></li>
+        {% else %}
+        <li><a href="/admin{{urlRouter}}?page={{page + 1}}">下一页</a></li>
+        {% endif %}
+
+    </ul>
+</nav>
